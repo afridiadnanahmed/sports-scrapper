@@ -1,0 +1,125 @@
+//Global styels
+body {
+    font-family: Helvetica;
+    font-size: 13px;
+    .custom-container {
+        width: 1100px;
+        margin: 0 auto;
+        padding: 0 10px;
+        max-width: 95%;
+    }
+    img {
+        max-width: 100%;
+    }
+    *[class^="col-"] {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    a {
+        color: $black;
+        &:hover {
+            text-decoration: none;
+            color: $primary-color;
+        }
+        &:focus {
+            text-decoration: none;
+            color: $primary-color;
+        }
+        @extend .transitions;
+    }
+    button{
+    	outline: 0 none;
+    }
+    .btn{
+    	outline:0 none !important;
+    	&:active, &:focus{
+    	outline:0 none;
+    	}
+    }
+
+    .row {
+        margin-left: -10px !important;
+        margin-right: -10px !important;
+    }
+    .line-through{
+    	position: relative;
+    	border-bottom:1px solid #809f97;
+    	span{
+    		position:absolute;
+    		font-size: 13px;
+    		color:#7e7e7e;
+    		padding:5px;
+    		background-color:#fff;
+    		@extend .all-center;
+    		
+
+
+    	}
+    }
+}
+
+//Fonts
+body {
+    h1,
+    .h1,
+    h2,
+    .h2,
+    h3,
+    .h3,
+    h4,
+    .h4,
+    h5,
+    .h5,
+    h6,
+    .h6 {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .card-title {
+        font-size: 18px;
+        color: $grey-text;
+    }
+    .card-tag {
+        font-size: 10px;
+        color: $primary-color;
+    }
+    .status-title {
+        font-size: 13px;
+        color: $black;
+    }
+    .bottom-title {
+        font-size: 12px;
+        color: $black;
+        font-weight: 600;
+    }
+    .table-heading{
+    	font-size:18px;
+    	font-weight:600;
+    	padding:20px 24px 16px 25px;
+    }
+    .fade-text{
+    	font-size: 15px;
+    	color:$grey-text;
+    }
+    .carousel-control.left,
+    .carousel-control.right {
+        background: none;
+        height: 38px;
+        width: 38px;
+        line-height: 34px;
+        text-align: center;
+        background: $primary-color;
+        @include border-radius(50px);
+        top: 98px;
+    }
+    .color-red {
+        color: #D2232A !important;
+    }
+    .info-bg {
+        background-color: #ebf3f5 !important;
+    }
+    .primary-border{
+    	border-color: #97c3c2 !important;
+    }
+}

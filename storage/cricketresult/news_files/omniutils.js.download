@@ -1,0 +1,82 @@
+/*!
+ * @fileOverview Omniture custom tracking utilities
+ * @requires jQuery, Underscore
+ * @optional jQuery cookie plugin in case you need to set prop9
+ * @version 0.0.1
+ */
+
+/**
+ * @example
+ // Omniture properties that need to be set
+    var omniProps = {
+        prop1: 'cricinfo',
+        prop2: 'D=SWID',
+        prop9: 'newsindex:load-more-stories-',
+        eVar74: 'newsindex:load-more-stories-'
+    };
+
+    // Omniture configs that need to be set on a per page basis
+    var omniConfig = {
+        setProp9Cookie: true
+    };
+
+    // Make the omniture call
+    espni.omniUtils.customTrack(omniProps, omniConfig);
+ */
+
+
+window.espni = window.espni || {};
+
+/**
+ * Create omniUtils namespace inside espni
+ */
+espni.omniUtils = (function(_, $) {
+
+    // Public API of the function
+    var api = {};
+
+    //console.log('_ VERSION', _.VERSION);
+    //console.log('jQuery version', $.fn.jquery);
+
+    // Check if omniture JavaScript is present on the page
+    var isOmniturePresent = typeof s_omni === 'undefined' ? false : true;
+
+    // Check if jQuery cookie plugin is present
+    var isCookiePluginPresent = $.hasOwnProperty('cookie');
+
+    /**
+     * Make custom omniture tracking calls
+     * @param  {Object} props Object contains properties that need to be set for
+     *                        the omniture request.
+     * @param  {Object} config Additional configuration settings
+     */
+    api.customTrack = function(props, config) {
+        //console.log('isOmniturePresent', isOmniturePresent);
+        // Return if omniture is not present
+        if (isOmniturePresent === false) {
+            return;
+        }
+
+        // Return if an empty object was passed
+        if (_.isEmpty(props) === true) {
+            return;
+        }
+
+        // Set prop9 cookie only if found in config
+        if (_.isEmpty(config) === false && config.setProp9Cookie === true) {
+            // Set cookie s_omni_lid
+            if (isCookiePluginPresent === true) {
+                $.cookie('s_omni_lid', props.prop9);
+            }
+        }
+
+        //console.log("s_omni", s_omni);
+        // Make the omniture call
+        s_omni.t();
+
+        return false;
+    };
+
+    return api;
+
+}(_, jQuery));

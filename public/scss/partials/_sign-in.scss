@@ -1,0 +1,42 @@
+//Sign in page styles
+
+.sign-in-content{
+	background:url(/images/sing-in-bg.jpg) no-repeat;
+	background-size:cover;
+	background-position:center center;
+	position:relative;
+	min-height:100vh;
+	min-height:100%;
+	&:before{
+		content:"";
+		position:absolute;
+		width:100%;
+		height:100%;
+		top:0;
+		left:0;
+		display: block;
+		opacity:.7;
+	
+		}
+	.content-holder{
+		width:401px;
+		max-width:100%;
+		position:absolute;
+		top:50%;
+		left:50%;
+		-webkit-transform:translate(-50%, -50%);
+		-moz-transform:translate(-50%, -50%);
+		-o-transform:translate(-50%, -50%);
+		transform:translate(-50%, -50%);
+		z-index: 10;
+		.card{
+			padding:45px 37px 75px 37px;
+		}
+		form{
+			.form-group{
+				margin-left:-15px;
+				margin-right: -15px;
+			}
+		}
+	}
+}
